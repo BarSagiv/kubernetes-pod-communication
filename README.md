@@ -5,6 +5,8 @@
 This project demonstrates basic pod-to-pod communication in Kubernetes, using both direct IP access and internal DNS resolution.  
 The goal: Test connectivity between a pod running an NGINX server and another pod using a custom Alpine image with `curl`.
 
+<img width="1374" height="548" alt="Screenshot 2025-07-11 115218" src="https://github.com/user-attachments/assets/21052536-9a1a-4069-b893-e1f34db76960" />
+
 ---
 
 ## 📁 Project Files
@@ -67,3 +69,6 @@ If everything is working correctly, the curl command from user-pod should return
 
 - The user-pod.yaml includes stdin: true and tty: true so the container stays running for interactive access.
 - Alpine doesn't include curl by default, so it's manually installed in the Dockerfile.
+
+
+<img width="864" height="258" alt="Screenshot 2025-07-11 095303" src="https://github.com/user-attachments/assets/1e2460f1-0d9d-47eb-975f-02c7603b2c43" />
