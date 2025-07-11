@@ -20,54 +20,50 @@ The goal: Test connectivity between a pod running an NGINX server and another po
 1. **Deploy the NGINX pod:**
    ```bash
    kubectl apply -f nginx-pod.yaml
-Build and push the custom curl image:
 
-bash
-Copy
-Edit
-docker build -t your-dockerhub-username/curl-alpine .
-docker push your-dockerhub-username/curl-alpine
-Deploy the user pod:
+2. **Build and push the custom curl image:**
+   ```bash
+   docker build -t your-dockerhub-username/curl-alpine .
+   docker push your-dockerhub-username/curl-alpine
 
-bash
-Copy
-Edit
-kubectl apply -f user-pod.yaml
-Get the NGINX pod IP:
+3. **Deploy the user pod:**
+   ```bash
+   kubectl apply -f user-pod.yaml
 
-bash
-Copy
-Edit
-kubectl get pod nginx-pod -o wide
-Access the user pod shell:
+4. **Get the NGINX pod IP:**
+   ```bash
+   kubectl get pod nginx-pod -o wide
 
-bash
-Copy
-Edit
-kubectl exec -it user-pod -- /bin/sh
-Test connectivity using NGINX pod IP:
+5. **Access the user pod shell:**
+   ```bash
+   kubectl exec -it user-pod -- /bin/sh
 
-bash
-Copy
-Edit
-curl http://<nginx-pod-IP>
-Test connectivity using internal DNS:
+6. **Test connectivity using NGINX pod IP:**
+   ```bash
+   curl http://<nginx-pod-IP>
 
-bash
-Copy
-Edit
-curl http://nginx-pod
-✅ Result
+7. **Test connectivity using internal DNS:**
+   ```bash
+   curl http://nginx-pod
+
+---
+
+## ✅ Result
+
 If everything is working correctly, the curl command from user-pod should return the default NGINX welcome page, proving successful pod-to-pod communication via both IP and DNS.
 
-🔧 Requirements
-Kubernetes cluster (e.g., Minikube or Kind)
+---
 
-Docker installed and logged into Docker Hub
 
-kubectl CLI
+## 🔧 Requirements
 
-📌 Notes
-The user-pod.yaml includes stdin: true and tty: true so the container stays running for interactive access.
+- Kubernetes cluster (Minikube)
+- Docker installed and logged into Docker Hub
+- kubectl CLI
 
-Alpine doesn't include curl by default, so it's manually installed in the Dockerfile.
+---
+
+## 📌 Notes
+
+- The user-pod.yaml includes stdin: true and tty: true so the container stays running for interactive access.
+- Alpine doesn't include curl by default, so it's manually installed in the Dockerfile.
