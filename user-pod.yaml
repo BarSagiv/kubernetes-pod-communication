@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: user-pod
+spec:
+  containers:
+    - name: alpine
+      image: barsagiv/alpine-curl
+      command: [ "sh" ]
+      stdin: true
+      tty: true
